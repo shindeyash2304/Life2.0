@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Krishnarao Shidne — insights on Health, Finance, Food, Travel and more. Watch videos, read blogs, and explore knowledge across topics."/>
+<title>Krishnarao Shidne — Know More, Live Better</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1a2e;
+    --ink2: #3d3d5c;
+    --ink3: #7a7a9a;
+    --paper: #f9f8f5;
+    --white: #ffffff;
+    --accent: #e8632a;
+    --accent2: #f5a623;
+    --teal: #1a9e8a;
+    --purple: #6b4fa0;
+    --blue: #2563eb;
+    --border: rgba(26,26,46,0.1);
+    --border2: rgba(26,26,46,0.06);
+    --shadow: 0 1px 3px rgba(26,26,46,0.08), 0 4px 16px rgba(26,26,46,0.05);
+    --shadow-lg: 0 2px 8px rgba(26,26,46,0.1), 0 16px 48px rgba(26,26,46,0.08);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --nav-h: 64px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: var(--nav-h);
+    background: rgba(249,248,245,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border2);
+    display: flex; align-items: center;
+  }
+  .nav-inner {
+    width: 100%; max-width: 1140px; margin: 0 auto;
+    padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 22px; color: var(--ink);
+    text-decoration: none; letter-spacing: -0.3px;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a {
+    font-size: 14px; font-weight: 500; color: var(--ink2);
+    text-decoration: none; transition: color .15s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    background: var(--ink); color: var(--white) !important;
+    padding: 8px 18px; border-radius: 50px;
+    font-size: 13px !important;
+    transition: background .15s !important;
+  }
+  .nav-cta:hover { background: var(--accent) !important; color: var(--white) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ink); border-radius: 2px; }
+  .mobile-menu {
+    display: none; position: fixed; top: var(--nav-h); left: 0; right: 0;
+    background: var(--white); border-bottom: 1px solid var(--border);
+    padding: 16px 24px; z-index: 99;
+    flex-direction: column; gap: 12px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { font-size: 15px; font-weight: 500; color: var(--ink); text-decoration: none; padding: 6px 0; border-bottom: 1px solid var(--border2); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    padding-top: var(--nav-h);
+    display: flex; align-items: center;
+    background: var(--paper);
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    background: radial-gradient(ellipse 60% 50% at 70% 60%, rgba(232,99,42,0.07) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 40% at 20% 30%, rgba(107,79,160,0.06) 0%, transparent 70%);
+  }
+  .hero-inner {
+    max-width: 1140px; margin: 0 auto; padding: 80px 24px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .hero-eyebrow {
+    font-size: 12px; font-weight: 500; letter-spacing: .1em;
+    color: var(--accent); text-transform: uppercase; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 1px; background: var(--accent); }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.1; letter-spacing: -1px;
+    color: var(--ink); margin-bottom: 20px;
+  }
+  .hero h1 em { color: var(--accent); font-style: italic; }
+  .hero-sub {
+    font-size: 17px; color: var(--ink2); line-height: 1.65;
+    margin-bottom: 32px; max-width: 480px;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: var(--white);
+    padding: 13px 28px; border-radius: 50px;
+    font-size: 14px; font-weight: 500; text-decoration: none;
+    transition: transform .15s, box-shadow .15s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(232,99,42,0.3); }
+  .btn-ghost {
+    background: transparent; color: var(--ink);
+    padding: 12px 28px; border-radius: 50px;
+    font-size: 14px; font-weight: 500; text-decoration: none;
+    border: 1px solid var(--border);
+    transition: border-color .15s, background .15s;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn-ghost:hover { border-color: var(--ink2); background: var(--white); }
+  .hero-stats {
+    display: flex; gap: 24px; margin-top: 40px; padding-top: 32px;
+    border-top: 1px solid var(--border2);
+  }
+  .hero-stat-num {
+    font-family: var(--font-display); font-size: 28px; color: var(--ink); line-height: 1;
+  }
+  .hero-stat-label { font-size: 12px; color: var(--ink3); margin-top: 2px; }
+  .hero-visual {
+    position: relative; display: flex; align-items: center; justify-content: center;
+  }
+  .hero-card-stack { position: relative; width: 100%; max-width: 380px; margin: 0 auto; }
+  .hero-card {
+    background: var(--white); border-radius: 18px;
+    padding: 20px; box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border2);
+  }
+  .hero-card-back {
+    position: absolute; top: -16px; left: 16px; right: -16px; bottom: 16px;
+    background: var(--white); border-radius: 18px;
+    border: 1px solid var(--border2); z-index: -1;
+    opacity: 0.5;
+  }
+  .hero-card-back2 {
+    position: absolute; top: -30px; left: 28px; right: -28px; bottom: 28px;
+    background: var(--white); border-radius: 18px;
+    border: 1px solid var(--border2); z-index: -2;
+    opacity: 0.25;
+  }
+  .hero-card-topic {
+    font-size: 11px; font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .hero-card-topic::before {
+    content: ''; display: inline-block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--accent);
+  }
+  .hero-card-title {
+    font-family: var(--font-display); font-size: 19px; line-height: 1.25;
+    color: var(--ink); margin-bottom: 10px;
+  }
+  .hero-card-meta { font-size: 12px; color: var(--ink3); }
+  .hero-card-img {
+    width: 100%; height: 140px; border-radius: 10px;
+    background: linear-gradient(135deg, #f5e6d8 0%, #ffe0cc 100%);
+    margin-bottom: 14px; display: flex; align-items: center; justify-content: center;
+    font-size: 44px;
+  }
+  .topic-pills {
+    display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px;
+  }
+  .topic-pill {
+    font-size: 11px; font-weight: 500; padding: 4px 10px;
+    border-radius: 50px; border: 1px solid var(--border);
+    color: var(--ink2); background: var(--paper);
+  }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 80px 24px; }
+  .container { max-width: 1140px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.15; letter-spacing: -0.5px;
+    color: var(--ink); margin-bottom: 12px;
+  }
+  .section-sub {
+    font-size: 16px; color: var(--ink2); max-width: 520px; line-height: 1.6;
+  }
+  .section-header { margin-bottom: 48px; }
+  .section-header-row {
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+    margin-bottom: 48px;
+  }
+  .view-all {
+    font-size: 13px; font-weight: 500; color: var(--ink2);
+    text-decoration: none; white-space: nowrap;
+    display: flex; align-items: center; gap: 4px;
+    transition: color .15s;
+  }
+  .view-all:hover { color: var(--accent); }
+
+  /* ─── TOPICS ─── */
+  #topics { background: var(--white); }
+  .topics-grid {
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+  }
+  .topic-card {
+    border-radius: var(--radius); padding: 24px 16px;
+    border: 1px solid var(--border2); cursor: pointer;
+    transition: transform .15s, box-shadow .15s, border-color .15s;
+    text-align: center; text-decoration: none; color: inherit;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+  }
+  .topic-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--border); }
+  .topic-icon { font-size: 32px; }
+  .topic-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .topic-count { font-size: 11px; color: var(--ink3); }
+  .tc-health { background: #fff5f0; }
+  .tc-finance { background: #f0f9f6; }
+  .tc-food { background: #fffbf0; }
+  .tc-travel { background: #f0f4ff; }
+  .tc-more { background: #f7f0ff; }
+
+  /* ─── VIDEOS ─── */
+  #videos { background: var(--paper); }
+  .videos-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .video-card {
+    background: var(--white); border-radius: var(--radius);
+    border: 1px solid var(--border2); overflow: hidden;
+    display: block; color: inherit; text-decoration: none;
+    transition: box-shadow .15s, transform .15s;
+  }
+  .video-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .video-thumb {
+    position: relative; aspect-ratio: 16/9;
+    background: #1a1a2e; overflow: hidden;
+    cursor: pointer;
+  }
+  .video-thumb-emoji {
+    width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+    font-size: 52px;
+  }
+  .video-thumb-overlay {
+    position: absolute; inset: 0; background: rgba(26,26,46,0.4);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity .2s;
+  }
+  .video-thumb:hover .video-thumb-overlay { opacity: 1; }
+  .play-btn {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--white); display: flex; align-items: center; justify-content: center;
+  }
+  .play-btn svg { width: 18px; height: 18px; fill: var(--ink); margin-left: 3px; }
+  .video-duration {
+    position: absolute; bottom: 8px; right: 8px;
+    background: rgba(26,26,46,0.85); color: var(--white);
+    font-size: 11px; font-weight: 500; padding: 2px 7px; border-radius: 4px;
+  }
+  .video-body { padding: 16px; }
+  .video-topic-tag {
+    font-size: 10px; font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase; margin-bottom: 6px;
+    display: inline-block; padding: 3px 8px; border-radius: 50px;
+  }
+  .tag-health { background: #fff0eb; color: #c04a1a; }
+  .tag-finance { background: #e8f8f3; color: #0e7c5f; }
+  .tag-food { background: #fff8e6; color: #9a6800; }
+  .tag-travel { background: #eef1ff; color: #2d46b9; }
+  .tag-wellness { background: #f3eeff; color: #5b3fa0; }
+  .video-title { font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.4; margin-bottom: 8px; }
+  .video-meta { font-size: 12px; color: var(--ink3); display: flex; gap: 10px; }
+
+  /* ─── BLOG ─── */
+  #blog { background: var(--white); }
+  .blog-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+  }
+  .blog-card {
+    background: var(--paper); border-radius: var(--radius);
+    border: 1px solid var(--border2); overflow: hidden;
+    display: block; color: inherit; text-decoration: none;
+    transition: box-shadow .15s, transform .15s;
+    display: flex; flex-direction: column;
+  }
+  .blog-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+  .blog-card-img {
+    height: 160px; display: flex; align-items: center; justify-content: center; font-size: 52px;
+  }
+  .blog-body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
+  .blog-title {
+    font-family: var(--font-display); font-size: 17px; line-height: 1.3;
+    color: var(--ink); margin: 8px 0 10px;
+  }
+  .blog-excerpt { font-size: 13px; color: var(--ink2); line-height: 1.55; flex: 1; margin-bottom: 14px; }
+  .blog-footer { display: flex; align-items: center; justify-content: space-between; }
+  .blog-meta { font-size: 11px; color: var(--ink3); }
+  .read-more {
+    font-size: 12px; font-weight: 500; color: var(--accent);
+    text-decoration: none; display: flex; align-items: center; gap: 4px;
+  }
+
+  /* ─── ABOUT ─── */
+  #about {
+    background: var(--paper);
+    display: block;
+  }
+  .about-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .about-avatar {
+    width: 100%; max-width: 380px; aspect-ratio: 1;
+    border-radius: 24px;
+    background: linear-gradient(145deg, #f5e6d8, #ffe0cc, #f5e6d8);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 100px; position: relative;
+    box-shadow: var(--shadow-lg);
+  }
+  .about-badge {
+    position: absolute; bottom: -12px; right: -12px;
+    background: var(--white); border-radius: 12px; padding: 10px 14px;
+    box-shadow: var(--shadow); border: 1px solid var(--border2);
+    font-size: 12px; font-weight: 500; color: var(--ink);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .about-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; }
+  .about-text h2 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 3.5vw, 40px); line-height: 1.15;
+    color: var(--ink); margin-bottom: 16px;
+  }
+  .about-text p { font-size: 15px; color: var(--ink2); line-height: 1.7; margin-bottom: 14px; }
+  .about-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0; }
+  .about-chip {
+    font-size: 12px; font-weight: 500; padding: 6px 14px;
+    border-radius: 50px; background: var(--white);
+    border: 1px solid var(--border); color: var(--ink2);
+  }
+
+  /* ─── NEWSLETTER ─── */
+  #newsletter {
+    background: var(--ink);
+    padding: 80px 24px;
+  }
+  .newsletter-inner {
+    max-width: 580px; margin: 0 auto; text-align: center;
+  }
+  #newsletter .section-label { color: var(--accent2); }
+  #newsletter .section-title { color: var(--white); }
+  #newsletter .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 32px; }
+  .email-form {
+    display: flex; gap: 10px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50px; padding: 6px 6px 6px 20px;
+  }
+  .email-input {
+    flex: 1; background: none; border: none; outline: none;
+    font-family: var(--font-body); font-size: 14px; color: var(--white);
+  }
+  .email-input::placeholder { color: rgba(255,255,255,0.4); }
+  .email-btn {
+    background: var(--accent); color: var(--white); border: none;
+    padding: 10px 22px; border-radius: 50px; font-size: 13px; font-weight: 500;
+    cursor: pointer; font-family: var(--font-body);
+    transition: background .15s;
+    white-space: nowrap;
+  }
+  .email-btn:hover { background: #d15522; }
+  .newsletter-note { font-size: 11px; color: rgba(255,255,255,0.35); margin-top: 14px; }
+
+  /* ─── HOSTING SECTION ─── */
+  #hosting { background: var(--paper); }
+  .hosting-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 0; }
+  .hosting-card {
+    background: var(--white); border-radius: var(--radius);
+    border: 1px solid var(--border2); padding: 22px;
+    position: relative; overflow: hidden;
+  }
+  .hosting-card.featured { border: 2px solid var(--accent); }
+  .hosting-badge {
+    position: absolute; top: 14px; right: 14px;
+    font-size: 10px; font-weight: 600; padding: 3px 9px; border-radius: 50px;
+    letter-spacing: .04em; text-transform: uppercase;
+  }
+  .hosting-free { background: #e8f8f3; color: #0e7c5f; }
+  .hosting-paid { background: #fff0eb; color: #c04a1a; }
+  .hosting-best { background: var(--accent); color: var(--white); }
+  .hosting-name { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+  .hosting-price { font-family: var(--font-display); font-size: 24px; color: var(--accent); margin-bottom: 10px; }
+  .hosting-price span { font-family: var(--font-body); font-size: 13px; color: var(--ink3); }
+  .hosting-desc { font-size: 13px; color: var(--ink2); line-height: 1.55; margin-bottom: 14px; }
+  .hosting-features { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .hosting-features li {
+    font-size: 12px; color: var(--ink2); display: flex; align-items: flex-start; gap: 7px;
+  }
+  .hosting-features li::before {
+    content: '✓'; color: var(--teal); font-weight: 600; font-size: 12px; flex-shrink: 0; margin-top: 1px;
+  }
+  .hosting-cross li::before { content: '✗'; color: #e05252; }
+  .domain-box {
+    margin-top: 48px; background: var(--white); border-radius: var(--radius);
+    border: 1px solid var(--border2); padding: 28px 32px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;
+  }
+  .domain-title { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+  .domain-sub { font-size: 13px; color: var(--ink2); line-height: 1.6; }
+  .domain-options { display: flex; flex-direction: column; gap: 10px; }
+  .domain-option {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px; border-radius: var(--radius-sm);
+    border: 1px solid var(--border2); background: var(--paper);
+  }
+  .domain-option-name { font-size: 13px; font-weight: 500; }
+  .domain-option-price { font-size: 12px; color: var(--ink3); }
+  .domain-rec {
+    background: #fff5f0; border: 1px solid rgba(232,99,42,0.2);
+    border-radius: var(--radius); padding: 14px 16px;
+    font-size: 13px; color: var(--ink2); margin-top: 14px; line-height: 1.6;
+  }
+  .domain-rec strong { color: var(--accent); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--ink); color: rgba(255,255,255,0.5);
+    padding: 48px 24px 32px;
+  }
+  .footer-inner {
+    max-width: 1140px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px;
+    padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand { grid-column: 1; }
+  .footer-logo {
+    font-family: var(--font-display); font-size: 22px; color: var(--white);
+    margin-bottom: 10px; display: block;
+  }
+  .footer-logo span { color: var(--accent); }
+  .footer-tagline { font-size: 13px; line-height: 1.6; margin-bottom: 16px; }
+  .footer-socials { display: flex; gap: 10px; }
+  .social-icon {
+    width: 34px; height: 34px; border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none;
+    transition: border-color .15s, color .15s;
+  }
+  .social-icon:hover { border-color: var(--accent); color: var(--accent); }
+  .footer-col h4 { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 14px; }
+  .footer-col a {
+    display: block; font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none;
+    margin-bottom: 8px; transition: color .15s;
+  }
+  .footer-col a:hover { color: var(--white); }
+  .footer-bottom {
+    max-width: 1140px; margin: 24px auto 0;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { display: none; }
+    .topics-grid { grid-template-columns: repeat(3, 1fr); }
+    .videos-grid, .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-inner { grid-template-columns: 1fr; gap: 40px; }
+    .about-avatar { display: none; }
+    .hosting-grid { grid-template-columns: 1fr; }
+    .domain-box { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .topics-grid { grid-template-columns: repeat(2, 1fr); }
+    .videos-grid, .blog-grid { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .email-form { flex-direction: column; border-radius: 12px; padding: 12px; }
+    .email-btn { border-radius: 8px; }
+    section { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Krishnarao<span>.</span></a>
+    <div class="nav-links">
+      <a href="#topics">Topics</a>
+      <a href="#videos">Videos</a>
+      <a href="#blog">Blog</a>
+      <a href="#about">About</a>
+      <a href="#newsletter" class="nav-cta">Subscribe</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#topics" onclick="toggleMenu()">Topics</a>
+  <a href="#videos" onclick="toggleMenu()">Videos</a>
+  <a href="#blog" onclick="toggleMenu()">Blog</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#newsletter" onclick="toggleMenu()">Subscribe</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Creator &amp; Knowledge Curator</div>
+      <h1>Know More,<br/><em>Live Better</em></h1>
+      <p class="hero-sub">Honest, researched takes on Health, Finance, Food, Travel — and everything in between. Videos that explain, blogs that go deeper.</p>
+      <div class="hero-actions">
+        <a href="#videos" class="btn-primary">Watch Videos →</a>
+        <a href="#blog" class="btn-ghost">Read the Blog</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">50+</div>
+          <div class="hero-stat-label">Videos published</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">30+</div>
+          <div class="hero-stat-label">Blog articles</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">5</div>
+          <div class="hero-stat-label">Topic categories</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="hero-card-back2"></div>
+        <div class="hero-card-back"></div>
+        <div class="hero-card">
+          <div class="hero-card-img">🥗</div>
+          <div class="hero-card-topic">Food &amp; Nutrition</div>
+          <div class="hero-card-title">5 Superfoods You Should Add to Your Daily Diet</div>
+          <div class="hero-card-meta">8 min read · 2.4k views</div>
+          <div class="topic-pills">
+            <span class="topic-pill">Health</span>
+            <span class="topic-pill">Finance</span>
+            <span class="topic-pill">Travel</span>
+            <span class="topic-pill">Food</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPICS -->
+<section id="topics">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Explore by topic</div>
+      <h2 class="section-title">What do you want to know?</h2>
+    </div>
+    <div class="topics-grid">
+      <a href="#" class="topic-card tc-health">
+        <div class="topic-icon">🏃</div>
+        <div class="topic-name">Health</div>
+        <div class="topic-count">18 posts</div>
+      </a>
+      <a href="#" class="topic-card tc-finance">
+        <div class="topic-icon">💰</div>
+        <div class="topic-name">Finance</div>
+        <div class="topic-count">14 posts</div>
+      </a>
+      <a href="#" class="topic-card tc-food">
+        <div class="topic-icon">🍱</div>
+        <div class="topic-name">Food</div>
+        <div class="topic-count">16 posts</div>
+      </a>
+      <a href="#" class="topic-card tc-travel">
+        <div class="topic-icon">✈️</div>
+        <div class="topic-name">Travel</div>
+        <div class="topic-count">11 posts</div>
+      </a>
+      <a href="#" class="topic-card tc-more">
+        <div class="topic-icon">💡</div>
+        <div class="topic-name">Lifestyle</div>
+        <div class="topic-count">9 posts</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="container">
+    <div class="section-header-row">
+      <div>
+        <div class="section-label">Latest videos</div>
+        <h2 class="section-title">Watch &amp; learn</h2>
+        <p class="section-sub">New videos every week — clear, jargon-free and made for real people.</p>
+      </div>
+      <a href="https://youtu.be/7j_XpLlh3GE?si=VPvP8uxSz6iMA6EE" target="_blank" class="view-all">View all on YouTube →</a>
+    </div>
+    <div class="videos-grid">
+      <a href="https://youtu.be/7j_XpLlh3GE?si=VPvP8uxSz6iMA6EE" target="_blank" class="video-card">
+        <div class="video-thumb">
+          <div class="video-thumb-emoji">🏃‍♂️</div>
+          <div class="video-thumb-overlay">
+            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <div class="video-duration">12:34</div>
+        </div>
+        <div class="video-body">
+          <span class="video-topic-tag tag-health">Health</span>
+          <div class="video-title">How to Build a Morning Routine That Actually Sticks</div>
+          <div class="video-meta"><span>14k views</span><span>3 days ago</span></div>
+        </div>
+      </a>
+      <a href="https://www.youtube.com/watch?v=ouvbeb2wSGA&pp=ygUHZmluYW5jZQ%3D%3D" target="_blank" class="video-card">
+        <div class="video-thumb">
+          <div class="video-thumb-emoji">📈</div>
+          <div class="video-thumb-overlay">
+            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <div class="video-duration">18:22</div>
+        </div>
+        <div class="video-body">
+          <span class="video-topic-tag tag-finance">Finance</span>
+          <div class="video-title">SIP vs Lump Sum — Which is Better in 2025?</div>
+          <div class="video-meta"><span>32k views</span><span>1 week ago</span></div>
+        </div>
+      </a>
+      <a href="https://youtu.be/BEzASBGeEIM?si=Y5KnSXa1YIv7bbPG" target="_blank" class="video-card">
+        <div class="video-thumb">
+          <div class="video-thumb-emoji">🍛</div>
+          <div class="video-thumb-overlay">
+            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <div class="video-duration">9:15</div>
+        </div>
+        <div class="video-body">
+          <span class="video-topic-tag tag-food">Food</span>
+          <div class="video-title">High Protein Indian Meals Under ₹100 Per Day</div>
+          <div class="video-meta"><span>21k views</span><span>2 weeks ago</span></div>
+        </div>
+      </a>
+      <a href="https://youtu.be/qVSADjnFLwM?si=60IA2OQe1IYGhzKl" target="_blank" class="video-card">
+        <div class="video-thumb">
+          <div class="video-thumb-emoji">🏔️</div>
+          <div class="video-thumb-overlay">
+            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <div class="video-duration">21:08</div>
+        </div>
+        <div class="video-body">
+          <span class="video-topic-tag tag-travel">Travel</span>
+          <div class="video-title">Manali in ₹5000 — Complete Budget Travel Guide</div>
+          <div class="video-meta"><span>48k views</span><span>3 weeks ago</span></div>
+        </div>
+      </a>
+      <a href="https://youtu.be/7c3ujkOLhjM?si=_0LKFo1VV02SB8UI" target="_blank" class="video-card">
+        <div class="video-thumb">
+          <div class="video-thumb-emoji">🧘</div>
+          <div class="video-thumb-overlay">
+            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <div class="video-duration">14:50</div>
+        </div>
+        <div class="video-body">
+          <span class="video-topic-tag tag-wellness">Wellness</span>
+          <div class="video-title">Anxiety Management — What Science Actually Says</div>
+          <div class="video-meta"><span>9k views</span><span>1 month ago</span></div>
+        </div>
+      </a>
+      <a href="https://youtu.be/7j_XpLlh3GE?si=VPvP8uxSz6iMA6EE" target="_blank" class="video-card">
+        <div class="video-thumb">
+          <div class="video-thumb-emoji">💳</div>
+          <div class="video-thumb-overlay">
+            <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <div class="video-duration">16:40</div>
+        </div>
+        <div class="video-body">
+          <span class="video-topic-tag tag-finance">Finance</span>
+          <div class="video-title">Best Credit Cards in India for 2025 — Ranked &amp; Compared</div>
+          <div class="video-meta"><span>27k views</span><span>1 month ago</span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="container">
+    <div class="section-header-row">
+      <div>
+        <div class="section-label">From the blog</div>
+        <h2 class="section-title">Read the long version</h2>
+        <p class="section-sub">Deeper dives, data, and actionable takeaways for every topic I cover.</p>
+      </div>
+      <a href="https://medium.com/@shikridat.ys/starting-my-journey-of-learning-cybersecurity-in-public-48ed6b8bfea3" target="_blank" class="view-all">All articles →</a>
+    </div>
+    <div class="blog-grid">
+      <a href="https://medium.com/@shikridat.ys/starting-my-journey-of-learning-cybersecurity-in-public-48ed6b8bfea3" target="_blank" class="blog-card">
+        <div class="blog-card-img" style="background: linear-gradient(135deg,#fff0eb,#ffe0cc)">🏋️</div>
+        <div class="blog-body">
+          <span class="video-topic-tag tag-health">Health</span>
+          <div class="blog-title">The Complete Indian Beginner's Guide to Building Muscle at Home</div>
+          <p class="blog-excerpt">No gym membership needed. Here's a structured 12-week plan using bodyweight, resistance bands, and basic equipment available at any sports store.</p>
+          <div class="blog-footer">
+            <div class="blog-meta">Jun 10 · 9 min read</div>
+            <span class="read-more">Read →</span>
+          </div>
+        </div>
+      </a>
+      <a href="https://medium.com/@shikridat.ys/starting-my-journey-of-learning-cybersecurity-in-public-48ed6b8bfea3" target="_blank" class="blog-card">
+        <div class="blog-card-img" style="background: linear-gradient(135deg,#e8f8f3,#d0f5e8)">📊</div>
+        <div class="blog-body">
+          <span class="video-topic-tag tag-finance">Finance</span>
+          <div class="blog-title">I Tracked Every Rupee I Spent for 90 Days — Here's What I Learned</div>
+          <p class="blog-excerpt">A real-world look at budgeting in Mumbai on a salaried income, the tools I used, and how I cut unnecessary spending by 28%.</p>
+          <div class="blog-footer">
+            <div class="blog-meta">Jun 5 · 7 min read</div>
+            <span class="read-more">Read →</span>
+          </div>
+        </div>
+      </a>
+      <a href="https://medium.com/@shikridat.ys/starting-my-journey-of-learning-cybersecurity-in-public-48ed6b8bfea3" target="_blank" class="blog-card">
+        <div class="blog-card-img" style="background: linear-gradient(135deg,#eef1ff,#dde5ff)">🌏</div>
+        <div class="blog-body">
+          <span class="video-topic-tag tag-travel">Travel</span>
+          <div class="blog-title">Southeast Asia on a Shoestring — 3 Countries, 21 Days, ₹60,000</div>
+          <p class="blog-excerpt">Thailand, Vietnam, and Cambodia — everything from visas and flights to accommodation and food costs, broken down day by day.</p>
+          <div class="blog-footer">
+            <div class="blog-meta">May 28 · 12 min read</div>
+            <span class="read-more">Read →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="hero-visual">
+        <div class="about-avatar">
+          👨‍💻
+          <div class="about-badge">
+            <div class="about-badge-dot"></div>
+            Publishing weekly
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-label">About me</div>
+        <h2>Curious by nature,<br/>thorough by habit</h2>
+        <p>Hey, I'm Krishnarao Shidne — based in Mumbai. I make videos and write about the things most people Google at 2am: how to eat better on a budget, where to invest, where to travel next, and how to actually feel good.</p>
+        <p>Everything I publish is properly researched, personally tested, and designed to give you clarity — not confusion. No sponsored fluff, no filler content.</p>
+        <div class="about-chips">
+          <span class="about-chip">🏃 Health & Fitness</span>
+          <span class="about-chip">💰 Personal Finance</span>
+          <span class="about-chip">🍱 Food & Nutrition</span>
+          <span class="about-chip">✈️ Budget Travel</span>
+          <span class="about-chip">🧠 Wellness</span>
+        </div>
+        <a href="#newsletter" class="btn-primary" style="margin-top: 8px; display: inline-flex;">Get my weekly newsletter →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section id="newsletter">
+  <div class="newsletter-inner">
+    <div class="section-label">Weekly newsletter</div>
+    <h2 class="section-title">Stay in the loop</h2>
+    <p class="section-sub">One email a week. New video links, a blog post, and one actionable tip across health, finance, or travel. No spam, ever.</p>
+    <div class="email-form">
+      <input class="email-input" type="email" placeholder="your@email.com" aria-label="Email address"/>
+      <button class="email-btn">Subscribe →</button>
+    </div>
+    <p class="newsletter-note">Join 1,200+ readers. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">Krishnarao<span>.</span></span>
+      <p class="footer-tagline">Honest, researched takes on health, finance, food, and travel — made in Mumbai, made for you.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-icon" aria-label="YouTube">▶</a>
+        <a href="#" class="social-icon" aria-label="Instagram">◈</a>
+        <a href="#" class="social-icon" aria-label="Twitter">✕</a>
+        <a href="#" class="social-icon" aria-label="LinkedIn">in</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Topics</h4>
+      <a href="#">Health</a>
+      <a href="#">Finance</a>
+      <a href="#">Food</a>
+      <a href="#">Travel</a>
+      <a href="#">Lifestyle</a>
+    </div>
+    <div class="footer-col">
+      <h4>Content</h4>
+      <a href="#">All Videos</a>
+      <a href="#">Blog Posts</a>
+      <a href="#">Newsletter</a>
+      <a href="#">YouTube Channel</a>
+    </div>
+    <div class="footer-col">
+      <h4>Me</h4>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+      <a href="#">Work with me</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Krishnarao Shidne. All rights reserved.</span>
+    <span>Built with ❤️ in Mumbai</span>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// Smooth scroll for all anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('mobileMenu').classList.remove('open');
+    }
+  });
+});
+
+// Newsletter form
+document.querySelector('.email-btn').addEventListener('click', () => {
+  const input = document.querySelector('.email-input');
+  if (input.value && input.value.includes('@')) {
+    input.value = '';
+    input.placeholder = '🎉 You\'re subscribed! Check your inbox.';
+    setTimeout(() => { input.placeholder = 'your@email.com'; }, 4000);
+  } else {
+    input.style.border = '1px solid #e05252';
+    input.placeholder = 'Please enter a valid email';
+    setTimeout(() => { input.style.border = ''; input.placeholder = 'your@email.com'; }, 2500);
+  }
+});
+
+// Video card click animation (simulate play)
+document.querySelectorAll('.video-thumb').forEach(thumb => {
+  thumb.addEventListener('click', () => {
+    thumb.style.transform = 'scale(0.97)';
+    setTimeout(() => thumb.style.transform = '', 150);
+  });
+});
+</script>
+</body>
+</html>
